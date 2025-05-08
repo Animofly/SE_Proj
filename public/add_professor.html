@@ -1,0 +1,16 @@
+<form id="form">
+  <label>Name: <input type="text" id="name" required></label>
+  <button type="submit">Add</button>
+</form>
+<script>
+  document.getElementById("form").onsubmit = async e => {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    await fetch('/professors', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name })
+    });
+    alert("Professor added");
+  };
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View and Edit Course</title>
+</head>
+<body>
+  <h2>View and Edit Course</h2>
+  
+  <table id="courseTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3>Edit Course</h3>
+  <form id="editCourseForm">
+    <label for="courseId">Course ID:</label>
+    <input type="number" id="courseId" required disabled><br>
+    <label for="courseName">Name:</label>
+    <input type="text" id="courseName" name="name" required><br><br>
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <script>
+    async function fetchCourses() {
+      const res = await fetch('/courses');
+      const data = await res.json();
+      const tbody = document.querySelector("#courseTable tbody");
+      data.forEach(course => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${course.name}</td>
+          <td>
+            <button onclick="editCourse(${course.id})">Edit</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    async function editCourse(id) {
+      const res = await fetch(`/courses/${id}`);
+      const course = await res.json();
+      document.getElementById("courseId").value = course.id;
+      document.getElementById("courseName").value = course.name;
+    }
+
+    document.getElementById("editCourseForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const id = document.getElementById("courseId").value;
+      const name = document.getElementById("courseName").value;
+      await fetch(`/courses/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name }),
+      });
+      alert("Course updated!");
+      location.reload(); // Reload page to see changes
+    });
+
+    fetchCourses();
+  </script>
+</body>
+</html>

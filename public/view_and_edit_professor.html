@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View and Edit Professor</title>
+</head>
+<body>
+  <h2>View and Edit Professor</h2>
+  <table id="professorTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3>Edit Professor</h3>
+  <form id="editProfessorForm">
+    <label>Name:
+      <input type="text" id="professorName" name="name" required>
+    </label><br>
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <script>
+    async function fetchProfessors() {
+      const res = await fetch('/professors');
+      const data = await res.json();
+      const tbody = document.querySelector("#professorTable tbody");
+      data.forEach(professor => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${professor.name}</td>
+          <td>
+            <button onclick="editProfessor(${professor.id})">Edit</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    async function editProfessor(id) {
+      const res = await fetch(`/professors/${id}`);
+      const professor = await res.json();
+      document.getElementById("professorName").value = professor.name;
+    }
+
+    document.getElementById("editProfessorForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const id = document.getElementById("professorId").value;
+      const name = document.getElementById("professorName").value;
+      await fetch(`/professors/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name }),
+      });
+      alert("Professor updated!");
+      location.reload(); // Reload page to see changes
+    });
+
+    fetchProfessors();
+  </script>
+</body>
+</html>

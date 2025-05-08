@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View and Edit Room</title>
+</head>
+<body>
+  <h2>View and Edit Room</h2>
+  
+  <table id="roomTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Lab</th>
+        <th>Size</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3>Edit Room</h3>
+  <form id="editRoomForm">
+    <label for="roomId">Room ID:</label>
+    <input type="number" id="roomId" required disabled><br>
+    <label for="roomName">Name:</label>
+    <input type="text" id="roomName" name="name" required><br><br>
+    <label for="lab">Lab:</label>
+    <input type="checkbox" id="lab" name="lab"><br><br>
+    <label for="size">Size:</label>
+    <input type="number" id="size" name="size" required><br><br>
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <script>
+    async function fetchRooms() {
+      const res = await fetch('/rooms');
+      const data = await res.json();
+      const tbody = document.querySelector("#roomTable tbody");
+      data.forEach(room => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${room.name}</td>
+          <td>${room.lab ? 'Yes' : 'No'}</td>
+          <td>${room.size}</td>
+          <td>
+            <button onclick="editRoom(${room.id})">Edit</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    async function editRoom(id) {
+      const res = await fetch(`/rooms/${id}`);
+      const room = await res.json();
+      document.getElementById("roomId").value = room.id;
+      document.getElementById("roomName").value = room.name;
+      document.getElementById("lab").checked = room.lab;
+      document.getElementById("size").value = room.size;
+    }
+
+    document.getElementById("editRoomForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const id = document.getElementById("roomId").value;
+      const name = document.getElementById("roomName").value;
+      const lab = document.getElementById("lab").checked;
+      const size = document.getElementById("size").value;
+      await fetch(`/rooms/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, lab, size }),
+      });
+      alert("Room updated!");
+      location.reload(); // Reload page to see changes
+    });
+
+    fetchRooms();
+  </script>
+</body>
+</html>
