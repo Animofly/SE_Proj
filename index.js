@@ -11,11 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public'))); // Serve HTML forms
 
 // Routes
-app.use('/professors', require('./routes/professor'));
-app.use('/courses', require('./routes/course'));
-app.use('/rooms', require('./routes/room'));
-app.use('/groups', require('./routes/classgroup'));
-app.use('/classes', require('./routes/class'));
+app.use('/professors', require('./routes/add_professor'));
+app.use('/courses', require('./routes/add_course'));
+app.use('/rooms', require('./routes/add_room'));
+app.use('/groups', require('./routes/add_classgroup'));
+app.use('/classes', require('./routes/add_class'));
 
 // Default route
 app.get('/', (req, res) => {
