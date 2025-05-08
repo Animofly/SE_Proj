@@ -1,0 +1,22 @@
+Tuesday Hour 1: EHM ev crag. with Prof. Ericyan S. in Room R48 for Group(s): KM/1
+Thursday Hour 2: EHM ev crag. with Prof. Mnacakanyan in Room R50 for Group(s): KM/1
+Monday Hour 2: EHM ev crag. with Prof. Mnacakanyan in Room R50 (Lab) for Group(s): KM/1, KM/1
+Friday Hour 4: EHM ev crag. with Prof. Mnacakanyan in Room R50 (Lab) for Group(s): KM/1, KM/1
+Wednesday Hour 3: Discrete Mathematic with Prof. Osipyan A. in Room R48 for Group(s): KM/1
+Wednesday Hour 2: Discrete Mathematic with Prof. Osipyan A. in Room R50 for Group(s): KM/1
+Friday Hour 2: Assembler with Prof. Harutyunyan A. in Room R13 (Lab) for Group(s): KM/2, KM/2
+Friday Hour 3: Assembler with Prof. Harutyunyan A. in Room R53 for Group(s): KM/2
+Thursday Hour 3: GUI cragravorum with Prof. Mnacakanyan in Room R13 (Lab) for Group(s): KM/2, KM/2
+Monday Hour 4: Grafneri tesutyun with Prof. Osipyan A. in Room R50 for Group(s): KM/2
+Friday Hour 4: Tvayin Metodner with Prof. Manasyan V. in Room R48 for Group(s): KM/3
+Monday Hour 2: Tvayin Metodner with Prof. Manasyan V. in Room R53 for Group(s): KM/3
+Friday Hour 1: Tvayin Metodner with Prof. Manasyan V. in Room R13 for Group(s): KM/3
+Tuesday Hour 1: Lisp with Prof. Sahakyan G. in Room R50 (Lab) for Group(s): KM/3, KM/3
+Monday Hour 3: Kombinator algorithmner with Prof. Osipyan A. in Room R50 for Group(s): KM/3
+Thursday Hour 3: Kombinator algorithmner with Prof. Osipyan A. in Room R53 for Group(s): KM/3
+Wednesday Hour 3: Optimizacman met. with Prof. Zaqaryan Gh. in Room R50 for Group(s): KM/4
+Tuesday Hour 4: Optimizacman met. with Prof. Zaqaryan Gh. in Room R50 for Group(s): KM/4
+Monday Hour 2: Komp. Cancer with Prof. Galstyan A. in Room R13 for Group(s): KM/4
+Thursday Hour 2: Komp. Cancer with Prof. Galstyan A. in Room R53 (Lab) for Group(s): KM/4, KM/4
+Friday Hour 3: Mat. Kibernetika with Prof. Manasyan V. in Room R48 for Group(s): KM/4
+Monday Hour 3: Mat. Kibernetika with Prof. Manasyan V. in Room R53 for Group(s): KM/4
