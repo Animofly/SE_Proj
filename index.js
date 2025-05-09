@@ -25,24 +25,24 @@ app.use('/classes', require('./routes/class'));
 
 // Home route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'professor.html')); // default landing
+  res.sendFile(path.join(__dirname, 'public', 'add_professor.html')); // default landing
 });
 
 // Form pages
 app.get('/professor_form', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'professor.html'));
+  res.sendFile(path.join(__dirname, 'public', 'add_professor.html'));
 });
 app.get('/course_form', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'course.html'));
+  res.sendFile(path.join(__dirname, 'public', 'add_course.html'));
 });
 app.get('/room_form', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'room.html'));
+  res.sendFile(path.join(__dirname, 'public', 'add_room.html'));
 });
 app.get('/group_form', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'group.html'));
+  res.sendFile(path.join(__dirname, 'public', 'add_group.html'));
 });
 app.get('/class_form', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'class.html'));
+  res.sendFile(path.join(__dirname, 'public', 'add_class.html'));
 });
 
 // View/Edit pages
