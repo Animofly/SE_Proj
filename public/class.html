@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Class</title>
+</head>
+<body>
+  <h2>Add Class</h2>
+  <form action="/classes" method="POST">
+    <label>Professor:
+      <select name="prof_id" id="professorSelect" required></select>
+    </label><br>
+
+    <label>Course:
+      <select name="course" id="courseSelect" required></select>
+    </label><br>
+
+    <label>Duration (hours):
+      <input type="number" name="duration" required>
+    </label><br>
+
+    <label>Group:
+      <select name="group_id" id="groupSelect" required></select>
+    </label><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    async function populateSelect(endpoint, selectId, labelKey = 'name') {
+      const res = await fetch(`/${endpoint}`);
+      const data = await res.json();
+      const select = document.getElementById(selectId);
+
+      data.forEach(item => {
+        const opt = document.createElement("option");
+        opt.value = item.id;
+        opt.textContent = `${item.id} - ${item[labelKey]}`;
+        select.appendChild(opt);
+      });
+    }
+
+    populateSelect('professors', 'professorSelect');
+    populateSelect('courses', 'courseSelect');
+    populateSelect('groups', 'groupSelect');
+  </script>
+</body>
+</html>
