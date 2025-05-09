@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View and Edit Group</title>
+</head>
+<body>
+  <h2>View and Edit Group</h2>
+  
+  <table id="groupTable">
+    <thead>
+      <tr>
+        <th>Group Name</th>
+        <th>Group Code</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h3>Edit Group</h3>
+  <form id="editGroupForm">
+    <label for="groupId">Group ID:</label>
+    <input type="number" id="groupId" required disabled><br>
+    <label for="groupName">Group Name:</label>
+    <input type="text" id="groupName" name="name" required><br><br>
+    <label for="groupCode">Group Code:</label>
+    <input type="text" id="groupCode" name="code" required><br><br>
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <script>
+    async function fetchGroups() {
+      const res = await fetch('/groups');
+      const data = await res.json();
+      const tbody = document.querySelector("#groupTable tbody");
+      data.forEach(group => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${group.name}</td>
+          <td>${group.code}</td>
+          <td>
+            <button onclick="editGroup(${group.id})">Edit</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    async function editGroup(id) {
+      const res = await fetch(`/groups/${id}`);
+      const group = await res.json();
+      document.getElementById("groupId").value = group.id;
+      document.getElementById("groupName").value = group.name;
+      document.getElementById("groupCode").value = group.code;
+    }
+
+    document.getElementById("editGroupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const id = document.getElementById("groupId").value;
+      const name = document.getElementById("groupName").value;
+      const code = document.getElementById("groupCode").value;
+      await fetch(`/groups/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, code }),
+      });
+      alert("Group updated!");
+      location.reload(); // Reload page to see changes
+    });
+
+    fetchGroups();
+  </script>
+</body>
+</html>
