@@ -67,4 +67,4 @@ SE_Proj/
         room.js
 ```
 Presentation video link: [https://youtu.be/TyBeE5BWGxQ?feature=shared](https://youtu.be/TyBeE5BWGxQ?feature=shared)<br>
-[Software Test plan](https://github.com/Animofly/SE_Proj/blob/master/Software%20Test%20Plan.ods)https://github.com/Animofly/SE_Proj/blob/master/Software%20Test%20Plan.ods)
+[Software Test plan](https://github.com/Animofly/SE_Proj/blob/master/Software%20Test%20Plan.ods)
